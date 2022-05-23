@@ -1,5 +1,7 @@
-import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { Maps } from '@syncfusion/ej2-angular-maps';
+
+declare var ol: any;
 
 @Component({
   selector: 'app-map',
@@ -7,8 +9,23 @@ import { Maps } from '@syncfusion/ej2-angular-maps';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  public layerType: string;
-  ngOnInit(): void {
-      this.layerType = 'OSM';
+  latitude: number = 48.707172;
+  longitude: number = 9.144544;
+
+  map: any;
+
+  ngOnInit() {
+    this.map = new ol.Map({
+      target: 'map',
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([this.longitude, this.latitude]),
+        zoom: 18
+      })
+    });
   }
-}
+}  

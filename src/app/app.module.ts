@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
+import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { MapComponent } from './map/map.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService , SelectionService, AnnotationsService, ZoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
